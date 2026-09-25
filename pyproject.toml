@@ -1,0 +1,9 @@
+[project]
+name = "food-standard-transition"
+version = "0.1.0"
+description = "食品标准迁移判定的服务端领域基础"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
