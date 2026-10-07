@@ -1,0 +1,158 @@
+{
+  "packages": [
+    {
+      "package_id": "GB 10765",
+      "version": "2010",
+      "title": "婴儿配方食品（旧版）",
+      "summary": "婴儿配方食品国家安全标准 2010 版，2023-02-22 被新版替代",
+      "effective_date": "2011-04-01",
+      "repeal_date": "2023-02-22",
+      "categories": ["婴儿配方食品"],
+      "clauses": [
+        {
+          "clause_id": "GB10765-2010-3.1",
+          "clause_no": "3.1",
+          "title": "蛋白质含量（旧法）",
+          "kind": "limit",
+          "categories": ["婴儿配方食品"],
+          "indicator": "蛋白质",
+          "basis": "per_100kj",
+          "min_value": 0.45,
+          "max_value": 0.7,
+          "unit": "g/100kJ",
+          "method_ref": "M-PROT-2010"
+        },
+        {
+          "clause_id": "GB10765-2010-3.4",
+          "clause_no": "3.4",
+          "title": "维生素D含量（IU，旧法）",
+          "kind": "limit",
+          "categories": ["婴儿配方食品"],
+          "indicator": "维生素D",
+          "basis": "per_100kcal",
+          "min_value": 40,
+          "max_value": 100,
+          "unit": "IU/100kcal",
+          "method_ref": "M-VD-2010"
+        },
+        {
+          "clause_id": "GB10765-2010-4.1",
+          "clause_no": "4.1",
+          "title": "标注旧产品标准号",
+          "kind": "label",
+          "categories": ["婴儿配方食品"],
+          "label_code": "LBL_STD_2010",
+          "label_required": true
+        }
+      ],
+      "amendments": []
+    },
+    {
+      "package_id": "GB 10765",
+      "version": "2021",
+      "title": "婴儿配方食品（新版）",
+      "summary": "婴儿配方食品国家安全标准 2021 版，2023-02-22 实施；维生素D改用质量单位与新检验法",
+      "effective_date": "2023-02-22",
+      "categories": ["婴儿配方食品"],
+      "clauses": [
+        {
+          "clause_id": "GB10765-2021-3.1",
+          "clause_no": "3.1",
+          "title": "蛋白质含量（新法）",
+          "kind": "limit",
+          "categories": ["婴儿配方食品"],
+          "indicator": "蛋白质",
+          "basis": "per_100kj",
+          "min_value": 0.43,
+          "max_value": 0.72,
+          "unit": "g/100kJ",
+          "method_ref": "M-PROT-2016"
+        },
+        {
+          "clause_id": "GB10765-2021-3.4",
+          "clause_no": "3.4",
+          "title": "维生素D含量（µg/100kJ，新法）",
+          "kind": "limit",
+          "categories": ["婴儿配方食品"],
+          "indicator": "维生素D",
+          "basis": "per_100kj",
+          "min_value": 0.25,
+          "max_value": 0.6,
+          "unit": "ug/100kJ",
+          "method_ref": "M-VD-2021"
+        },
+        {
+          "clause_id": "GB10765-2021-5.2",
+          "clause_no": "5.2",
+          "title": "新国标标签提示语",
+          "kind": "label",
+          "categories": ["婴儿配方食品"],
+          "label_code": "LBL_2021_NOTICE",
+          "label_required": true
+        },
+        {
+          "clause_id": "GB10765-2021-5.3",
+          "clause_no": "5.3",
+          "title": "禁止标注旧版宣传标记",
+          "kind": "label",
+          "categories": ["婴儿配方食品"],
+          "label_code": "LBL_FORBIDDEN_MARK",
+          "label_required": false
+        }
+      ],
+      "amendments": [
+        {
+          "amendment_id": "AMD-GB10765-2021-1",
+          "number": "第1号修改单",
+          "effective_date": "2024-03-01",
+          "summary": "放宽维生素D上限并废止旧版宣传标记条款",
+          "replacements": [
+            {
+              "clause_no": "3.4",
+              "action": "replace",
+              "clause": {
+                "clause_id": "GB10765-2021-3.4-A1",
+                "clause_no": "3.4",
+                "title": "维生素D含量（第1号修改单调整上限）",
+                "kind": "limit",
+                "categories": ["婴儿配方食品"],
+                "indicator": "维生素D",
+                "basis": "per_100kj",
+                "min_value": 0.25,
+                "max_value": 0.66,
+                "unit": "ug/100kJ",
+                "method_ref": "M-VD-2021"
+              }
+            },
+            {"clause_no": "5.3", "action": "repeal"}
+          ]
+        }
+      ]
+    }
+  ],
+  "methods": [
+    {"method_id": "M-PROT-2010", "code": "GB 5009.5", "version": "2010", "indicator": "蛋白质", "title": "食品中蛋白质的测定（2010版）", "issued_date": "2010-03-26"},
+    {"method_id": "M-PROT-2016", "code": "GB 5009.5", "version": "2016", "indicator": "蛋白质", "title": "食品中蛋白质的测定（2016版）", "issued_date": "2016-12-23"},
+    {"method_id": "M-VD-2010", "code": "GB 5413.9", "version": "2010", "indicator": "维生素D", "title": "婴幼儿食品和乳品中维生素A、D、E的测定（2010版）", "issued_date": "2010-03-26"},
+    {"method_id": "M-VD-2021", "code": "GB 5413.9", "version": "2021", "indicator": "维生素D", "title": "婴幼儿食品和乳品中维生素A、D、E的测定（2021版）", "issued_date": "2021-10-11"}
+  ],
+  "equivalences": [
+    {"method_id": "M-PROT-2010", "other_method_id": "M-PROT-2016", "indicator": "蛋白质", "comparable": true, "note": "两版均为凯氏定氮，经验证同指标结果可比"},
+    {"method_id": "M-VD-2010", "other_method_id": "M-VD-2021", "indicator": "维生素D", "comparable": true, "note": "示例数据：两版方法经验证对维生素D结果可比，允许跨版本比较数值"}
+  ],
+  "policies": [
+    {
+      "policy_id": "P-IF-2023",
+      "category": "婴儿配方食品",
+      "old_package_id": "GB 10765",
+      "old_version": "2010",
+      "new_package_id": "GB 10765",
+      "new_version": "2021",
+      "new_effective_date": "2023-02-22",
+      "enforcement_date": "2023-02-22",
+      "old_label_use_until": "2025-08-22",
+      "stock_new_limits_from": "2025-02-22",
+      "note": "2023-02-22 前生产库存按旧限值销售至 2025-02-22；旧标签使用过渡期至 2025-08-22"
+    }
+  ]
+}

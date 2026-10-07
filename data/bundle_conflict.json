@@ -1,0 +1,57 @@
+{
+  "packages": [
+    {
+      "package_id": "GB 22570",
+      "version": "2014",
+      "title": "辅食营养补充品",
+      "summary": "儿童营养补充品通用标准，铁限值 6~12 mg/100g",
+      "effective_date": "2014-11-01",
+      "categories": ["儿童营养补充品"],
+      "clauses": [
+        {
+          "clause_id": "GB22570-2014-3.2",
+          "clause_no": "3.2",
+          "title": "铁含量（旧标准）",
+          "kind": "limit",
+          "categories": ["儿童营养补充品"],
+          "indicator": "铁",
+          "basis": "per_100g",
+          "min_value": 6,
+          "max_value": 12,
+          "unit": "mg/100g",
+          "method_ref": "M-FE"
+        }
+      ],
+      "amendments": []
+    },
+    {
+      "package_id": "GB 99999",
+      "version": "2022",
+      "title": "儿童营养补充品技术规范",
+      "summary": "另一部同时有效的现行标准，铁限值 14~20 mg/100g，与 GB 22570 区间互斥且无替代关系",
+      "effective_date": "2022-06-01",
+      "categories": ["儿童营养补充品"],
+      "clauses": [
+        {
+          "clause_id": "GB99999-2022-4.1",
+          "clause_no": "4.1",
+          "title": "铁含量（新技术规范）",
+          "kind": "limit",
+          "categories": ["儿童营养补充品"],
+          "indicator": "铁",
+          "basis": "per_100g",
+          "min_value": 14,
+          "max_value": 20,
+          "unit": "mg/100g",
+          "method_ref": "M-FE"
+        }
+      ],
+      "amendments": []
+    }
+  ],
+  "methods": [
+    {"method_id": "M-FE", "code": "GB 5009.90", "version": "2016", "indicator": "铁", "title": "食品中铁的测定", "issued_date": "2016-12-23"}
+  ],
+  "equivalences": [],
+  "policies": []
+}

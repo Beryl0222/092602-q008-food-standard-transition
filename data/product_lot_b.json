@@ -1,0 +1,24 @@
+{
+  "batch": {
+    "lot_id": "LOT-B-2023-05",
+    "product_name": "集团同款婴儿配方奶粉（共享配方）",
+    "category": "婴儿配方食品",
+    "factory_id": "FACTORY-B",
+    "production_date": "2023-05-10"
+  },
+  "snapshot": {
+    "snapshot_id": "SNAP-SHARED-IF-02",
+    "energy_kcal_per_100g": 500,
+    "components": [["蛋白质", "g/100kJ"], ["维生素D", "ug/100kJ"]],
+    "recorded_at": "2023-05-01"
+  },
+  "labels": [
+    {"label_code": "LBL_STD_2010", "present": false, "label_version_date": "2023-04-20"},
+    {"label_code": "LBL_2021_NOTICE", "present": true, "label_version_date": "2023-04-20"},
+    {"label_code": "LBL_FORBIDDEN_MARK", "present": false}
+  ],
+  "tests": [
+    {"test_id": "T-B-PROT", "indicator": "蛋白质", "value": 0.55, "unit": "g/100kJ", "method_id": "M-PROT-2016", "tested_at": "2023-05-11", "received_at": "2023-05-15"},
+    {"test_id": "T-B-VD", "indicator": "维生素D", "value": 0.45, "unit": "ug/100kJ", "method_id": "M-VD-2021", "tested_at": "2023-05-11", "received_at": "2023-05-15"}
+  ]
+}

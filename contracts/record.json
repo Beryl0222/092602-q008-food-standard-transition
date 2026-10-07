@@ -1,9 +1,94 @@
 {
-  "名称": "食品标准迁移判定基础记录",
-  "必填字段": [
-    "record_id",
-    "owner_id",
-    "state"
-  ],
-  "说明": "该契约只描述现有登记能力，后续领域状态在此基础上扩展。"
+  "名称": "食品标准迁移判定输入契约",
+  "说明": "所有载荷为 UTF-8 JSON；业务日期使用 YYYY-MM-DD，审计时间为带时区 ISO 时间戳。",
+  "规则包导入": {
+    "命令": "import <bundle.json...>",
+    "packages[]": {
+      "package_id": "标准编号，如 GB 10765",
+      "version": "版本年份，如 2010 / 2021",
+      "title": "标准名称",
+      "summary": "识别用摘要，随证据展示",
+      "effective_date": "生效日",
+      "repeal_date": "废止日（可空）",
+      "categories": ["适用品类"],
+      "clauses[]": {
+        "clause_id": "条款唯一号（可省略，按 编号@版本:条款号 生成）",
+        "clause_no": "条款号，修改单按此号覆盖",
+        "kind": "limit | label",
+        "categories": ["品类"],
+        "indicator": "指标名（limit）",
+        "basis": "per_100g | per_100kcal | per_100kj",
+        "min_value": "下限（可空）",
+        "max_value": "上限（可空）",
+        "unit": "g/100g | mg/100g | mg/kg | ug/100g | IU/100kcal ...",
+        "method_ref": "强制检验方法版本 ID",
+        "label_code": "标签声明码（label）",
+        "label_required": "true=必须出现；false=禁止出现（label）"
+      },
+      "amendments[]": {
+        "number": "修改单号",
+        "effective_date": "生效日；事件时点早于该日的判定看不到本修改单",
+        "summary": "修改摘要",
+        "replacements[]": {
+          "clause_no": "只影响明确列出的条款号",
+          "action": "replace | repeal",
+          "clause": "replace 时为新条款全文；repeal 时省略"
+        }
+      }
+    },
+    "methods[]": {"method_id": "ID", "code": "方法编号", "version": "版本", "indicator": "指标"},
+    "equivalences[]": {
+      "method_id": "方法A",
+      "other_method_id": "方法B",
+      "indicator": "指标",
+      "comparable": "只有显式声明 true 才允许跨版本比较数值"
+    },
+    "policies[]": {
+      "category": "品类",
+      "old_package_id/old_version": "旧标准",
+      "new_package_id/new_version": "新标准",
+      "enforcement_date": "强制切换日：此前生产库存按旧限值",
+      "stock_new_limits_from": "库存适用新限值的日期",
+      "old_label_use_until": "旧标签库存使用截止日；期内不符判换标，过期判停止流转"
+    },
+    "幂等与锁定": [
+      "同 编号+版本+内容指纹：identical，不产生新版本",
+      "同 编号+版本 但内容不同：drift_locked，原内容保留，依赖该标准的判定全部停止，需 resolve-drift 处置"
+    ]
+  },
+  "产品批次": {
+    "命令": "product <json...>",
+    "batch": {
+      "lot_id": "批次号",
+      "product_name": "产品名",
+      "category": "品类，用于匹配条款与过渡政策",
+      "factory_id": "工厂",
+      "production_date": "生产日期：生产时规则按此日选取"
+    },
+    "snapshot": {"snapshot_id": "可省略", "energy_kcal_per_100g": "能量基数换算必需"},
+    "labels[]": {"label_code": "声明码", "present": "是否标注"},
+    "tests[]": {
+      "test_id": "可省略",
+      "indicator": "指标",
+      "value": "检测值",
+      "unit": "检测单位（支持 IU）",
+      "method_id": "实际使用的检验方法版本",
+      "tested_at": "检测日期",
+      "received_at": "进入流程日期（默认当前时间）"
+    },
+    "流程规则": "已出具结论的批次不得改基础信息；后补检测只进入 open 流程，decided 后只能 review"
+  },
+  "豁免": {
+    "起草": "exemption-draft <json>：scope=lot|category，scope_value，clause_id，drafted_by",
+    "批准": "exemption-decide --id --by --approve|--reject：批准人不得等于起草人；只有 approved 生效"
+  },
+  "判定与复核": {
+    "首版": "judge --lot --date：结果 compliant | relabel | halt；矛盾/锁定/缺检测时 stopped（退出码 3，不出结论）",
+    "复核": "review --lot --date：生成新版本，原结论不覆盖；返回逐项影响分析（status_changed/basis_changed/added/removed）",
+    "查询": "decision --lot [--items]：逐项给出条款时点、单位换算步骤、检验方法版本、修改单轨迹"
+  },
+  "批量迁移": {
+    "命令": "migrate --campaign --date --lots a,b | --lots-file [--limit N]",
+    "续跑": "检查点 (campaign_id, lot_id)：done 永不再处理，不重复生成决定；conflict/blocked 延后重试，不阻塞剩余产品"
+  }
 }
